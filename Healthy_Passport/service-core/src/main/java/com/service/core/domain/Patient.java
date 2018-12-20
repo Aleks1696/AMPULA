@@ -32,7 +32,7 @@ public class Patient {
     @Column
     private Date birthday;
     @OneToOne(fetch = FetchType.EAGER, targetEntity = Card.class)
-    @JoinColumn(name = "patient_id", referencedColumnName = "card_id")
+    @JoinColumn(name = "card_id", referencedColumnName = "card_id")
     private Card card;
 
     @ManyToMany(mappedBy = "patients", targetEntity = Doctor.class)
