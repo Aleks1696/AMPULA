@@ -1,8 +1,10 @@
-package com.service.core.domain;
+package com.api.dto;
 
-import javax.persistence.*;
+/***
+ Data Transfer Object - основное назначение класса,
+  передача параметров для Frontend
 
-/*** Карточка:
+ CardDTO:
  1.Рост
  2.Вес
  3.Группа крови
@@ -10,44 +12,23 @@ import javax.persistence.*;
  5.История Болезни(Врач может редактировать и просматривать)
  6.Больница,в которой зарегистрирован пользователь
 
- by Yaroslav Halindzovskiy 17.12.2018
-
- // Заменил поля "hight' and 'weight' с Long на Double,так как вес и рост может быть
- не целый 20.12.2018
+ by Anton Platunov 20.12.2018
  */
 
-@Entity
-@Table(name = "cards")
-public class Card {
-
-    @Id
-    @Column(name = "card_id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+public class CardDTO {
     private Long id;
-    @Column
+
     private Double height;
-    @Column
+
     private Double weight;
-    @Column
+
     private Character gender;
-    @Column
+
     private String history;
-    @Column
+
     private String hospital;
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "cards", targetEntity = Patient.class)
-    private Patient patient;
 
-    public Card() {
-    }
-
-    public Card(Double height, Double weight, Character gender, String history, String hospital, Patient patient) {
-        this.height = height;
-        this.weight = weight;
-        this.gender = gender;
-        this.history = history;
-        this.hospital = hospital;
-        this.patient = patient;
-    }
+    private String patient;
 
     public Long getId() {
         return id;
@@ -97,24 +78,24 @@ public class Card {
         this.hospital = hospital;
     }
 
-    public Patient getPatient() {
+    public String getPatient() {
         return patient;
     }
 
-    public void setPatient(Patient patient) {
+    public void setPatient(String patient) {
         this.patient = patient;
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Card{");
+        final StringBuilder sb = new StringBuilder("CardDTO{");
         sb.append("id=").append(id);
         sb.append(", height=").append(height);
         sb.append(", weight=").append(weight);
         sb.append(", gender=").append(gender);
         sb.append(", history='").append(history).append('\'');
         sb.append(", hospital='").append(hospital).append('\'');
-        sb.append(", patient=").append(patient);
+        sb.append(", patient='").append(patient).append('\'');
         sb.append('}');
         return sb.toString();
     }
