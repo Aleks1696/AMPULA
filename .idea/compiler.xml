@@ -7,12 +7,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="service-api" />
+        <module name="service-api (1) (com.service.api)" />
         <module name="service-core" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Healthy_Passport" target="1.5" />
       <module name="service-api" target="1.5" />
+      <module name="service-api (1) (com.service.api)" target="1.5" />
       <module name="service-core" target="1.5" />
     </bytecodeTargetLevel>
   </component>
