@@ -1,6 +1,7 @@
 package com.api.endpoint;
 
 
+import com.api.request.GeneralRequest;
 import com.api.response.GeneralErrorResponse;
 import com.api.response.GeneralResponse;
 import io.swagger.annotations.*;
@@ -23,7 +24,7 @@ public interface CardEndpoint {
             @ApiResponse(code = 500, message = "Fail - Internal server error",response = GeneralErrorResponse.class),
     })
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    GeneralResponse<Long> createCard ()
+    GeneralResponse<Long> createCard (GeneralRequest<Void,CardParametrs>, cardRequset);
 
     /*
     *
