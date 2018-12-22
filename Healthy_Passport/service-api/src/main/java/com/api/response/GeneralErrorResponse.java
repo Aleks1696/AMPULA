@@ -6,6 +6,10 @@ public class GeneralErrorResponse {
     private String error;
     private String message;
 
+    public GeneralErrorResponse() {
+
+    }
+
     public GeneralErrorResponse(Long code, String error, String message) {
         this.code = code;
         this.error = error;
@@ -15,11 +19,25 @@ public class GeneralErrorResponse {
     public Long getCode() {
         return code;
     }
+
+    public void setCode(Long code) {
+        this.code = code;
+    }
+
     public String getError() {
         return error;
     }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
     public String getMessage() {
         return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     @Override

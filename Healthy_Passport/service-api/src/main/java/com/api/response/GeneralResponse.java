@@ -1,49 +1,42 @@
 package com.api.response;
-/* Единый вариант (стандарт) для оформления тела ответа
- *
- * code - предназначен для указания кода ошибки
- *        200 - ОК
- *        400 - Ошибка в запросе
- *        401 - Ошибка авторизаций
- *        403 - Ошибка доступа
- *        404 - Страница не существует
- *        500 - Ошибка на стороне сервера
- * payload - тело ответа которое может меняться в зависимости от ситуации */
 
-public class GeneralResponse<T> {
-private String code;
-private T payload;
 
-    public GeneralResponse() {
-    }
+    public class GeneralResponse<T> {
 
-    public GeneralResponse(String code, T payload) {
-        this.code = code;
-        this.payload = payload;
-    }
+        private Long code;
+        private T playload;
 
-    public String getCode() {
-        return code;
-    }
+        public GeneralResponse() {
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+        }
 
-    public T getPayload() {
-        return payload;
-    }
+        public GeneralResponse(Long code, T playload) {
+            this.code = code;
+            this.playload = playload;
+        }
 
-    public void setPayload(T payload) {
-        this.payload = payload;
-    }
+        public Long getCode() {
+            return code;
+        }
 
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("GeneralResponse{");
-        sb.append("code='").append(code).append('\'');
-        sb.append(", payload=").append(payload);
-        sb.append('}');
-        return sb.toString();
-    }
+        public void setCode(Long code) {
+            this.code = code;
+        }
+
+        public T getPlayload() {
+            return playload;
+        }
+
+        public void setPlayload(T playload) {
+            this.playload = playload;
+        }
+
+        @Override
+        public String toString() {
+            final StringBuilder sb = new StringBuilder("GeneralResponse{");
+            sb.append("code=").append(code);
+            sb.append(", playload=").append(playload);
+            sb.append('}');
+            return sb.toString();
+        }
 }
