@@ -1,6 +1,6 @@
 package com.api.request.directRequest;
 
-public class UpdateCardRequest {
+public class UpdateCardRequest  extends CreateCardRequest{
 
     private Long id;
 
