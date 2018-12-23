@@ -1,6 +1,6 @@
 package com.api.request.directRequest;
 
-public class UpdateDoctorRequest {
+public class UpdateDoctorRequest  extends  CreateDoctorRequest{
     private Long id;
 
     public Long getId() {
