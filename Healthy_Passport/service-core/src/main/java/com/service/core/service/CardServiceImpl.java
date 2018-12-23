@@ -1,5 +1,9 @@
 package com.service.core.service;
 
+import com.api.dto.CardDTO;
+import com.api.dto.PatientDTO;
+import com.api.request.directRequest.CreateCardRequest;
+import com.api.request.directRequest.UpdateCardRequest;
 import com.service.core.dao.CardRepository;
 import com.service.core.domain.Card;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,31 +17,31 @@ import java.util.List;
  * */
 @Service
 public class CardServiceImpl implements CardService {
+
     private CardRepository cardRepository;
-@Autowired
+
+    @Autowired
     public CardServiceImpl(CardRepository cardRepository) {
         this.cardRepository = cardRepository;
     }
 
-    public Long create(Card card) {
-
-        return cardRepository.saveAndFlush(card).getId();
-    }
-
-    public Card get(Long id) {
-
+    public Long createCard(CreateCardRequest parameters) {
         return null;
     }
 
-    public void update(Card card) {
+    public void deleteCardById(Long id) {
 
     }
 
-    public void delete(Card card) {
+    public void updateCard(Long id, UpdateCardRequest parameters) {
 
     }
 
-    public List<Card> findAll() {
+    public CardDTO getCardData(Long id) {
+        return null;
+    }
+
+    public PatientDTO getCardOwnerData(Long cardId) {
         return null;
     }
 }

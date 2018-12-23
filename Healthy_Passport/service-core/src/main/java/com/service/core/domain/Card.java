@@ -34,7 +34,7 @@ public class Card {
     private String history;
     @Column
     private String hospital;
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "cards", targetEntity = Patient.class)
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "card", targetEntity = Patient.class)
     private Patient patient;
 
     public Card() {

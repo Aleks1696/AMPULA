@@ -1,8 +1,11 @@
 package com.api.endpoint;
 
 
+import com.api.dto.CardDTO;
+import com.api.dto.PatientDTO;
 import com.api.request.GeneralRequest;
-import com.api.response.GeneralErrorResponse;
+import com.api.request.directRequest.CreateCardRequest;
+import com.api.request.directRequest.UpdateCardRequest;
 import com.api.response.GeneralResponse;
 import io.swagger.annotations.*;
 import org.springframework.http.MediaType;
@@ -18,13 +21,50 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(value = "api/card/")
 
 public interface CardEndpoint {
+
     @ApiOperation(value = "Create new card for patient")
-    @ApiResponse({
-            @ApiResponse(code = 200, message = "OK - Card record is created"),
-            @ApiResponse(code = 500, message = "Fail - Internal server error",response = GeneralErrorResponse.class),
+    @ApiResponses({
+
     })
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    GeneralResponse<Long> createCard (GeneralRequest<Void,CardParametrs>, cardRequset);
+    GeneralResponse<Long> createCard(GeneralRequest<Void, CreateCardRequest> request);
+
+
+    @ApiOperation(value = "Delete patient card by card id")
+    @ApiResponses({
+
+    })
+    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    GeneralResponse<Void> deleteCardById(Long card_id);
+
+
+    @ApiOperation(value = "Update patient's card data")
+    @ApiResponses({
+
+    })
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    GeneralResponse<Void> updateCard(GeneralRequest<Long, UpdateCardRequest> request);
+
+
+    @ApiOperation(value = "Get card data by ID")
+    @ApiResponses({
+
+    })
+    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    GeneralResponse<CardDTO> getCardData(Long card_id);
+
+    //получаем данные клиента через ИД карты (карта и клиент у нас связаны)
+    @ApiOperation(value = "Get card owner data by card ID")
+    @ApiResponses({
+
+    })
+    @RequestMapping(value = "/get/owner/data", method = RequestMethod.GET)
+    GeneralResponse<PatientDTO> getCardOwnerData(Long card_id);
+
+
+
+
+
 
     /*
     *
