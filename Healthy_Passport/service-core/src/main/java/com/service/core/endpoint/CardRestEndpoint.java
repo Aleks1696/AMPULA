@@ -13,11 +13,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * Created by Aleksandr Borodavka 03.01.2019
+ *
+ * */
+
 @RestController
 public class CardRestEndpoint implements CardEndpoint {
 
-    @Autowired
     private CardService cardService;
+    @Autowired
+    public CardRestEndpoint(CardService cardService) {
+        this.cardService = cardService;
+    }
 
     public GeneralResponse<Long> createCard(
             @RequestBody GeneralRequest<Void, CreateCardRequest> request) {
