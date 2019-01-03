@@ -1,5 +1,7 @@
 package com.service.core.domain;
 
+import com.service.core.domain.types.Gender;
+
 import javax.persistence.*;
 
 /*** Карточка:
@@ -14,6 +16,10 @@ import javax.persistence.*;
 
  // Заменил поля "hight' and 'weight' с Long на Double,так как вес и рост может быть
  не целый 20.12.2018
+
+ by Aleksandr Borodavka 03.01.2019
+ Заменил поле Gender с Character на String. Не знаю почему но с символом вообще ничего не работает. Выдает
+ ошибку по типу: "Can not parse Character."
  */
 
 @Entity
@@ -29,7 +35,8 @@ public class Card {
     @Column
     private Double weight;
     @Column
-    private Character gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
     @Column
     private String history;
     @Column
@@ -40,7 +47,7 @@ public class Card {
     public Card() {
     }
 
-    public Card(Double height, Double weight, Character gender, String history, String hospital, Patient patient) {
+    public Card(Double height, Double weight, Gender gender, String history, String hospital, Patient patient) {
         this.height = height;
         this.weight = weight;
         this.gender = gender;
@@ -73,11 +80,11 @@ public class Card {
         this.weight = weight;
     }
 
-    public Character getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(Character gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
