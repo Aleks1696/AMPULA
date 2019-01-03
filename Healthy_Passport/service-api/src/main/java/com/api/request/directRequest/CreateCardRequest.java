@@ -6,13 +6,13 @@ public class CreateCardRequest {
 
     private Double weight;
 
-    private Character gender;
+    private String gender;
 
     private String history;
 
     private String hospital;
 
-    private String patient;
+    private Long patientId;
 
     public Double getHeight() {
         return height;
@@ -28,10 +28,10 @@ public class CreateCardRequest {
         this.weight = weight;
         return this;
     }
-    public Character getGender() {
+    public String getGender() {
         return gender;
     }
-    public CreateCardRequest setGender(Character gender) {
+    public CreateCardRequest setGender(String gender) {
         this.gender = gender;
         return this;
     }
@@ -49,11 +49,11 @@ public class CreateCardRequest {
         this.hospital = hospital;
         return this;
     }
-    public String getPatient() {
-        return patient;
+    public Long getPatient() {
+        return patientId;
     }
-    public CreateCardRequest setPatient(String patient) {
-        this.patient = patient;
+    public CreateCardRequest setPatient(Long patient) {
+        this.patientId = patient;
         return this;
     }
 
@@ -65,7 +65,7 @@ public class CreateCardRequest {
         sb.append(", gender=").append(gender);
         sb.append(", history='").append(history).append('\'');
         sb.append(", hospital='").append(hospital).append('\'');
-        sb.append(", patient='").append(patient).append('\'');
+        sb.append(", patient='").append(patientId).append('\'');
         sb.append('}');
         return sb.toString();
     }
