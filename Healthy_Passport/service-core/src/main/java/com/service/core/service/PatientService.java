@@ -1,6 +1,10 @@
 package com.service.core.service;
 
 
+import com.api.dto.PatientDTO;
+import com.api.request.GeneralRequest;
+import com.api.request.directRequest.CreatePatientRequest;
+import com.api.request.directRequest.UpdatePatientRequest;
 import com.service.core.domain.Patient;
 
 import java.util.List;
@@ -12,14 +16,13 @@ import java.util.List;
  * */
 public interface PatientService {
 
+    Long createPatient(CreatePatientRequest parameters);
 
-    Long create(Patient patient);
+    void updatePatient(Long id, UpdatePatientRequest parameters);
 
-    Patient get(Long id);
+    void deletePatient(Long id);
 
-    void update(Patient patient);
+    PatientDTO getPatientData(Long id);
 
-    void delete(Patient patient);
-
-    List<Patient> findAll();
+    List<PatientDTO> getAllPatients();
 }

@@ -13,7 +13,11 @@ package com.api.dto;
  6.Больница,в которой зарегистрирован пользователь
 
  by Anton Platunov 20.12.2018
+
+ changed by Aleksandr Borodavka 03.01.2019
+ Заменил тип поля gender с Character на String.
  */
+
 
 public class CardDTO {
     private Long id;
@@ -22,7 +26,7 @@ public class CardDTO {
 
     private Double weight;
 
-    private Character gender;
+    private String gender;
 
     private String history;
 
@@ -54,11 +58,11 @@ public class CardDTO {
         this.weight = weight;
     }
 
-    public Character getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Character gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
