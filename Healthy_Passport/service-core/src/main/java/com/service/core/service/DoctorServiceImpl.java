@@ -30,7 +30,7 @@ public class DoctorServiceImpl implements DoctorService {
         Doctor doctor = new Doctor();
         doctor.setName(parameters.getName());
         doctor.setSurname(parameters.getSurname());
-        doctor.setDoctorsTypes(parameters.getDoctorType());
+        doctor.setDoctorsTypes(parameters.getDoctorsTypes());
         doctorRepository.saveAndFlush(doctor);
 
 

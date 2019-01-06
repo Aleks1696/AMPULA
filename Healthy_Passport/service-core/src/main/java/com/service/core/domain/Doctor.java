@@ -1,7 +1,9 @@
 package com.service.core.domain;
 
 
-import com.service.core.domain.types.DoctorsTypes;
+
+
+import com.api.request.DoctorsTypes;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -96,4 +98,6 @@ public class Doctor {
         sb.append('}');
         return sb.toString();
     }
+
+
 }

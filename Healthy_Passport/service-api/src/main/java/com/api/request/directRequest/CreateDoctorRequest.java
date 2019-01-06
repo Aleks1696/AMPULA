@@ -1,5 +1,7 @@
 package com.api.request.directRequest;
 
+import com.api.request.DoctorsTypes;
+
 /****
  *
  *
@@ -14,7 +16,7 @@ public class CreateDoctorRequest {
 
     private String name;
     private String surname;
-    private String doctorType;
+    private DoctorsTypes doctorsTypes;
 
     public String getName() {
         return name;
@@ -32,21 +34,20 @@ public class CreateDoctorRequest {
         this.surname = surname;
     }
 
-    public com.service.core.domain.types.DoctorsTypes getDoctorType() {
-        return doctorType;
+    public DoctorsTypes getDoctorsTypes() {
+        return doctorsTypes;
     }
 
-    public void setDoctorType(String doctorType) {
-        this.doctorType = doctorType;
+    public void setDoctorsTypes(DoctorsTypes doctorsTypes) {
+        this.doctorsTypes = doctorsTypes;
     }
-
 
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("CreateDoctorRequest{");
         sb.append("name='").append(name).append('\'');
         sb.append(", surname='").append(surname).append('\'');
-        sb.append(", doctorType='").append(doctorType).append('\'');
+        sb.append(", doctorsTypes=").append(doctorsTypes);
         sb.append('}');
         return sb.toString();
     }

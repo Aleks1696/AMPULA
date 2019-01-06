@@ -26,7 +26,7 @@ public class DoctorRestEndpoint implements DoctorEndpoint {
             @RequestParam DoctorsTypes doctorsType,
             @RequestBody GeneralRequest<Void, CreateDoctorRequest> request) {
         return new GeneralResponse<Long>(
-                200L, doctorService.addNewDoctor(doctorsType, request.getParameters()));
+                200L, doctorService.addNewDoctor( request.getParameters()));
     }
 
     public GeneralResponse<Void> deleteDoctor(

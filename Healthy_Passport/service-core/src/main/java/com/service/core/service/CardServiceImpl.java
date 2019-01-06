@@ -38,10 +38,10 @@ public class CardServiceImpl implements CardService {
     }
 
     public Long createCard(CreateCardRequest parameters) {
-        Patient patient = patientRepository.findOne(parameters.getPatient());
+        Patient patient = patientRepository.findOne(parameters.getPatientId());
         if (patient == null){
             throw new EntryIsNotFoundException(500L,
-                    String.format("Patient with id = %d is not found", parameters.getPatient()));
+                    String.format("Patient with id = %d is not found", parameters.getPatientId()));
         }
         Card card = new Card();
         card.setHeight(parameters.getHeight());
