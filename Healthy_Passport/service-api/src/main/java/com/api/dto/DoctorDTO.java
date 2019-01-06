@@ -7,6 +7,10 @@ package com.api.dto;
  * 3.Какой врач(Хирург,кардиолог и тд)
  *
  *  Anton Platunov 20.12.2018
+ *
+ *
+ *  Yaroslav Halindzovskiy 6.01.2017
+ *   Добавил DoctorType в ввиде строки.
  * */
 
 public class DoctorDTO {
@@ -16,6 +20,8 @@ public class DoctorDTO {
     private String name;
 
     private String surname;
+
+    private String doctorType;
 
     public Long getId() {
         return id;

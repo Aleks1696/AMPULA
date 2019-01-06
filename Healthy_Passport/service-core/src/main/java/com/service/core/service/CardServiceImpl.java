@@ -15,6 +15,7 @@ import com.service.core.util.PatientMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 /**
@@ -110,5 +111,9 @@ public class CardServiceImpl implements CardService {
                     500L, String.format("Card with id = %d is not found", cardId));
         }
         return PatientMapper.patientToPatientDTO(card.getPatient());
+    }
+
+    public List<Card> findAll() {
+        return cardRepository.findAll();
     }
 }

@@ -1,5 +1,16 @@
 package com.api.request.directRequest;
 
+
+/****
+ *
+ *
+ * Yaroslav Halindzovskiy 06.01.2018
+ *
+ * Изменил странные setter
+ *
+ *
+ * */
+
 public class CreateCardRequest {
 
     private Double height;
@@ -17,44 +28,49 @@ public class CreateCardRequest {
     public Double getHeight() {
         return height;
     }
-    public CreateCardRequest setHeight(Double height) {
+
+    public void setHeight(Double height) {
         this.height = height;
-        return this;
     }
+
     public Double getWeight() {
         return weight;
     }
-    public CreateCardRequest setWeight(Double weight) {
+
+    public void setWeight(Double weight) {
         this.weight = weight;
-        return this;
     }
+
     public String getGender() {
         return gender;
     }
-    public CreateCardRequest setGender(String gender) {
+
+    public void setGender(String gender) {
         this.gender = gender;
-        return this;
     }
+
     public String getHistory() {
         return history;
     }
-    public CreateCardRequest setHistory(String history) {
+
+    public void setHistory(String history) {
         this.history = history;
-        return this;
     }
+
     public String getHospital() {
         return hospital;
     }
-    public CreateCardRequest setHospital(String hospital) {
+
+    public void setHospital(String hospital) {
         this.hospital = hospital;
-        return this;
     }
-    public Long getPatient() {
+
+    public Long getPatientId() {
         return patientId;
     }
-    public CreateCardRequest setPatient(Long patient) {
-        this.patientId = patient;
-        return this;
+
+    public void setPatientId(Long patientId) {
+        this.patientId = patientId;
     }
 
     @Override
@@ -62,10 +78,10 @@ public class CreateCardRequest {
         final StringBuilder sb = new StringBuilder("CreateCardRequest{");
         sb.append("height=").append(height);
         sb.append(", weight=").append(weight);
-        sb.append(", gender=").append(gender);
+        sb.append(", gender='").append(gender).append('\'');
         sb.append(", history='").append(history).append('\'');
         sb.append(", hospital='").append(hospital).append('\'');
-        sb.append(", patient='").append(patientId).append('\'');
+        sb.append(", patientId=").append(patientId);
         sb.append('}');
         return sb.toString();
     }
