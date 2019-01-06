@@ -20,5 +20,5 @@ public interface CardService {
 
     PatientDTO getCardOwnerData (Long cardId);
 
-//    List<Card> findAll();
+   List<Card> findAll();
 }

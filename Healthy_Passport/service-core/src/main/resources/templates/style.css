@@ -1,0 +1,10 @@
+body{
+    background-color: aqua;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+h1{
+    flex: 100px;
+}
