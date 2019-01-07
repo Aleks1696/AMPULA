@@ -32,8 +32,11 @@ public class Doctor {
     private String surname;
     @Column
     private DoctorsTypes doctorsTypes;
+
+
     @ManyToMany(fetch = FetchType.EAGER, targetEntity = Patient.class)
-    @JoinTable(name = "record_on_patients", joinColumns = @JoinColumn(name = "doctors_ref_id", referencedColumnName = "doctor_id"),
+    @JoinTable(name = "record_on_patients",
+            joinColumns = @JoinColumn(name = "doctors_ref_id", referencedColumnName = "doctor_id"),
             inverseJoinColumns = @JoinColumn(name = "patient_ref_id", referencedColumnName = "patient_id"))
     private List<Patient> patients = new ArrayList<Patient>();
 

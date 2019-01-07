@@ -8,7 +8,10 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>AMPULA</title>
+    <title>AMPOULE</title>
+
+    <script type="text/javascript" src="/static/lib/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/static/js/registr.js"></script>
 </head>
 
 <body>
@@ -23,15 +26,17 @@
     <div>
         <!-- Рамка -->
         <fieldset>
-            <legend>Функциональный блок 1</legend>
+            <legend>Регистрация нового пользователя</legend>
             <p>Логин</p>
-            <input id="textField1" type="text"/>
+            <input id="login" type="text"/>
             <p>Пароль</p>
-            <p> <input id="textField2" type="text"/></p>
+            <input id="password" type="text"/>
             <p>Подтверждение пароля</p>
-            <p> <input id="textField3" type="text"/></p>
-            <input id="btn1" type="button" value="Войти"/>
-            <input id="btn3" type="button" value="Зарегистрироватся"/>
+            <input id="passwordConfirm" type="text"/>
+            <hr/>
+            <input type="button" value="отмена" />
+            <input type="button" value="Зарегистрироваться" onclick="createPatient() "/>
+
         </fieldset>
     </div>
 

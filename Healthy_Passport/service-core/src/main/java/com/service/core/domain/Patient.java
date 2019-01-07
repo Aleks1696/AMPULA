@@ -31,22 +31,16 @@ public class Patient {
     private String surname;
     @Column
     private Date birthday;
+
     @OneToOne(fetch = FetchType.EAGER, targetEntity = Card.class)
     @JoinColumn(name = "card_id", referencedColumnName = "card_id")
     private Card card;
 
-    @ManyToMany(mappedBy = "patients", targetEntity = Doctor.class)
-    private List<Doctor> doctors = new ArrayList();
-
-    public Patient() {
-    }
-
-    public Patient(String name, String surname, Date birthday, Card card, List<Doctor> doctors) {
+    public Patient(String name, String surname, Date birthday, Card card) {
         this.name = name;
         this.surname = surname;
         this.birthday = birthday;
         this.card = card;
-        this.doctors = doctors;
     }
 
     public Long getId() {
@@ -89,14 +83,6 @@ public class Patient {
         this.card = card;
     }
 
-    public List<Doctor> getDoctors() {
-        return doctors;
-    }
-
-    public void setDoctors(List<Doctor> doctors) {
-        this.doctors = doctors;
-    }
-
     @Override
     public String toString() {
         final StringBuilder sb = new StringBuilder("Patient{");
@@ -105,7 +91,6 @@ public class Patient {
         sb.append(", surname='").append(surname).append('\'');
         sb.append(", birthday=").append(birthday);
         sb.append(", card=").append(card);
-        sb.append(", doctors=").append(doctors);
         sb.append('}');
         return sb.toString();
     }
