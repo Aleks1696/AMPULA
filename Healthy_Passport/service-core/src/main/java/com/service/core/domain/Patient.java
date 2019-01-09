@@ -2,6 +2,7 @@ package com.service.core.domain;
 
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +16,9 @@ import java.util.List;
  4. Сущность " Карточка"
 
  by Yaroslav Halindzovskiy 17.12.2018
+
+ Aleksandr Borodavka 09.01.2019
+
 
  */
 @Entity
@@ -30,13 +34,16 @@ public class Patient {
     @Column
     private String surname;
     @Column
-    private Date birthday;
+    private LocalDate birthday;
 
-    @OneToOne(fetch = FetchType.EAGER, targetEntity = Card.class)
-    @JoinColumn(name = "card_id", referencedColumnName = "card_id")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "patient", targetEntity = Card.class,
+    cascade = CascadeType.REMOVE)
     private Card card;
 
-    public Patient(String name, String surname, Date birthday, Card card) {
+    public Patient() {
+    }
+
+    public Patient(String name, String surname, LocalDate birthday, Card card) {
         this.name = name;
         this.surname = surname;
         this.birthday = birthday;
@@ -67,11 +74,11 @@ public class Patient {
         this.surname = surname;
     }
 
-    public Date getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
