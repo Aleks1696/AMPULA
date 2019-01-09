@@ -38,11 +38,12 @@ public class PatientServiceImpl implements PatientService {
 
     public Long createPatient(CreatePatientRequest parameters) {
         Patient patient = new Patient();
-//        if (patientRepository.findByNameAndSurnameEquals()){
-//            throw new EntryIsNotFoundException(
-//                    500L, String.format("Patient with name: %name and surname: %surname is already registered",
-//                    parameters.getName(), parameters.getSurname()));
-//        }
+        if (patientRepository.findByNameAndSurnameEquals(
+                parameters.getName(), parameters.getSurname()) != null){
+            throw new EntryIsNotFoundException(
+                    500L, String.format("Patient with name: '%s' and surname: '%s' is already registered",
+                    parameters.getName(), parameters.getSurname()));
+        }
         patient.setName(parameters.getName());
         patient.setSurname(parameters.getSurname());
         patient.setBirthday(LocalDate.parse(parameters.getBirthday(), parser));
