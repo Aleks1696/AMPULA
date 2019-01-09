@@ -1,6 +1,6 @@
 package com.api.request.directRequest;
 
-import com.api.request.DoctorsTypes;
+import com.api.request.types.DoctorsTypes;
 
 /****
  *

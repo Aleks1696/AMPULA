@@ -8,22 +8,20 @@ package com.api.request.directRequest;
  *
  * Изменил странные setter
  *
- *
+ *  Aleksandr Borodavka 08.01.2019
+ *  добавил поле Long doctorId + гетеры + сетеры
  * */
 
 public class CreateCardRequest {
 
     private Double height;
-
     private Double weight;
-
     private String gender;
-
     private String history;
-
     private String hospital;
-
     private Long patientId;
+    private Long doctorId;
+
 
     public Double getHeight() {
         return height;
@@ -71,6 +69,14 @@ public class CreateCardRequest {
 
     public void setPatientId(Long patientId) {
         this.patientId = patientId;
+    }
+
+    public Long getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(Long doctorId) {
+        this.doctorId = doctorId;
     }
 
     @Override
