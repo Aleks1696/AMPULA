@@ -5,10 +5,12 @@ import com.api.dto.PatientDTO;
 import com.api.request.directRequest.CreateCardRequest;
 import com.api.request.directRequest.UpdateCardRequest;
 import com.service.core.dao.CardRepository;
+import com.service.core.dao.DoctorRepository;
 import com.service.core.dao.PatientRepository;
 import com.service.core.domain.Card;
+import com.service.core.domain.Doctor;
 import com.service.core.domain.Patient;
-import com.service.core.domain.types.Gender;
+import com.api.request.types.Gender;
 import com.service.core.exception.EntryIsNotFoundException;
 import com.service.core.util.CardMapper;
 import com.service.core.util.PatientMapper;
@@ -16,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  *
@@ -30,18 +31,25 @@ public class CardServiceImpl implements CardService {
 
     private CardRepository cardRepository;
     private PatientRepository patientRepository;
+    private DoctorRepository doctorRepository;
 
     @Autowired
-    public CardServiceImpl(CardRepository cardRepository, PatientRepository patientRepository) {
+    public CardServiceImpl(CardRepository cardRepository, PatientRepository patientRepository,
+                           DoctorRepository doctorRepository) {
         this.cardRepository = cardRepository;
         this.patientRepository = patientRepository;
+        this.doctorRepository = doctorRepository;
     }
 
     public Long createCard(CreateCardRequest parameters) {
         Patient patient = patientRepository.findOne(parameters.getPatientId());
+        Doctor doctor = doctorRepository.findOne(parameters.getDoctorId());
         if (patient == null){
             throw new EntryIsNotFoundException(500L,
                     String.format("Patient with id = %d is not found", parameters.getPatientId()));
+        } else if (doctor == null){
+            throw new EntryIsNotFoundException(
+                    500L, String.format("Doctor with id = %d is not found", parameters.getDoctorId()));
         }
         Card card = new Card();
         card.setHeight(parameters.getHeight());
@@ -55,9 +63,14 @@ public class CardServiceImpl implements CardService {
         card.setHistory(parameters.getHistory());
         card.setHospital(parameters.getHospital());
         card.setPatient(patient);
+        card.getDoctors().add(doctor);
 
         cardRepository.saveAndFlush(card);
 
+        //сетим в карту доктора, а доктору карту
+        doctor.getCards().add(card);
+        doctorRepository.saveAndFlush(doctor);
+        //сетим пациенту карту
         patient.setCard(card);
         patientRepository.saveAndFlush(patient);
 
@@ -70,9 +83,7 @@ public class CardServiceImpl implements CardService {
             throw new EntryIsNotFoundException(
                     500L, String.format("Card with id = %d is not found", id));
         }
-        Patient patient = patientRepository.findOne(card.getPatient().getId());
-        patient.setCard(null);
-        patientRepository.saveAndFlush(patient);
+        card.removeCard(doctorRepository, cardRepository);
         cardRepository.delete(card);
     }
 
@@ -101,7 +112,7 @@ public class CardServiceImpl implements CardService {
             throw new EntryIsNotFoundException(
                     500L, String.format("Card with id = %d is not found", id));
         }
-        return CardMapper.cardToCardDTO(card);
+        return CardMapper.cardToCardDTO(card, card.getPatient());
     }
 
     public PatientDTO getCardOwnerData(Long cardId) {
