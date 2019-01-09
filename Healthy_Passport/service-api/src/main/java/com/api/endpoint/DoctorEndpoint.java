@@ -1,8 +1,7 @@
 package com.api.endpoint;
 
+import com.api.dto.CardDTO;
 import com.api.dto.DoctorDTO;
-import com.api.dto.PatientDTO;
-import com.api.request.DoctorsTypes;
 import com.api.request.GeneralRequest;
 import com.api.request.directRequest.CreateDoctorRequest;
 import com.api.request.directRequest.UpdateDoctorRequest;
@@ -24,8 +23,8 @@ import java.util.List;
         produces = MediaType.APPLICATION_JSON_UTF8_VALUE,
         schemes = SwaggerDefinition.Scheme.HTTPS
 )
-@Api(tags = "Doctor Service")
-@RequestMapping(value = "api/doctor")
+@Api(tags = "Doctor Service", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, protocols = "https")
+@RequestMapping(value = "api/doctor/")
 public interface DoctorEndpoint {
 
     @ApiOperation(value = "Add new doctor")
@@ -33,8 +32,7 @@ public interface DoctorEndpoint {
             @ApiResponse(code = 200, message = "OK")
     })
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    GeneralResponse<Long> addNewDoctor(
-            DoctorsTypes doctorsType, GeneralRequest<Void, CreateDoctorRequest> request);
+    GeneralResponse<Long> addNewDoctor(GeneralRequest<Void, CreateDoctorRequest> request);
 
 
     @ApiOperation(value = "Fire a doctor")
@@ -70,7 +68,7 @@ public interface DoctorEndpoint {
             @ApiResponse(code = 500, message = "Server error", response = GeneralErrorResponse.class)
     })
     @RequestMapping(value = "/get/all/patients", method = RequestMethod.GET)
-    GeneralResponse<List<PatientDTO>> getAllPatients(Long doctor_id);
+    GeneralResponse<List<CardDTO>> getAllPatients(Long doctor_id);
 
 
     @ApiOperation(value = "Get all doctors")
