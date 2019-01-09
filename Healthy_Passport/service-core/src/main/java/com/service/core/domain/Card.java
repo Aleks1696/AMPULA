@@ -1,8 +1,12 @@
 package com.service.core.domain;
 
-import com.service.core.domain.types.Gender;
+import com.service.core.dao.CardRepository;
+import com.service.core.dao.DoctorRepository;
+import com.api.request.types.Gender;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /*** Карточка:
  1.Рост
@@ -20,6 +24,10 @@ import javax.persistence.*;
  by Aleksandr Borodavka 03.01.2019
  Заменил поле Gender с Character на String. Не знаю почему но с символом вообще ничего не работает. Выдает
  ошибку по типу: "Can not parse Character."
+
+ Aleksandr Borodavka 09.01.2019
+ Доктор связан с картой, не с пациентом
+
  */
 
 @Entity
@@ -41,10 +49,17 @@ public class Card {
     private String history;
     @Column
     private String hospital;
-    @OneToOne(fetch = FetchType.EAGER, mappedBy = "card", targetEntity = Patient.class)
+
+    @OneToOne(fetch = FetchType.EAGER, targetEntity = Patient.class,
+            cascade = CascadeType.DETACH)
+    @JoinColumn(name = "patient_id", referencedColumnName = "patient_id")
     private Patient patient;
 
+    @ManyToMany(fetch = FetchType.EAGER, mappedBy = "cards", targetEntity = Doctor.class)
+    List<Doctor> doctors = new ArrayList<>();
+
     public Card() {
+
     }
 
     public Card(Double height, Double weight, Gender gender, String history, String hospital, Patient patient) {
@@ -54,6 +69,16 @@ public class Card {
         this.history = history;
         this.hospital = hospital;
         this.patient = patient;
+    }
+
+    //костылизм самый настоящий
+    //если нужно удалить карту этот метод удалит у каждого доктора данную карту
+    public void removeCard(DoctorRepository doctorRepository, CardRepository cardRepository) {
+        for (Doctor doctor : doctors) {
+            doctor.getCards().remove(this);
+            doctorRepository.saveAndFlush(doctor);
+        }
+        cardRepository.saveAndFlush(this);
     }
 
     public Long getId() {
@@ -110,6 +135,14 @@ public class Card {
 
     public void setPatient(Patient patient) {
         this.patient = patient;
+    }
+
+    public List<Doctor> getDoctors() {
+        return doctors;
+    }
+
+    public void setDoctors(List<Doctor> doctors) {
+        this.doctors = doctors;
     }
 
     @Override
