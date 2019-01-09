@@ -1,32 +1,30 @@
 package com.service.core.endpoint;
 
+import com.api.dto.CardDTO;
 import com.api.dto.DoctorDTO;
-import com.api.dto.PatientDTO;
 import com.api.endpoint.DoctorEndpoint;
-import com.api.request.DoctorsTypes;
 import com.api.request.GeneralRequest;
 import com.api.request.directRequest.CreateDoctorRequest;
 import com.api.request.directRequest.UpdateDoctorRequest;
 import com.api.response.GeneralResponse;
 import com.service.core.service.DoctorService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Service
+@RestController
 public class DoctorRestEndpoint implements DoctorEndpoint {
 
     @Autowired
     private DoctorService doctorService;
 
     public GeneralResponse<Long> addNewDoctor(
-            @RequestParam DoctorsTypes doctorsType,
             @RequestBody GeneralRequest<Void, CreateDoctorRequest> request) {
         return new GeneralResponse<Long>(
-                200L, doctorService.addNewDoctor( request.getParameters()));
+                200L, doctorService.addNewDoctor(request.getParameters()));
     }
 
     public GeneralResponse<Void> deleteDoctor(
@@ -47,9 +45,9 @@ public class DoctorRestEndpoint implements DoctorEndpoint {
                 200L, doctorService.getDoctor(doctor_id));
     }
 
-    public GeneralResponse<List<PatientDTO>> getAllPatients(
+    public GeneralResponse<List<CardDTO>> getAllPatients(
             @RequestParam Long doctor_id) {
-        return new GeneralResponse<List<PatientDTO>>(
+        return new GeneralResponse<List<CardDTO>>(
                 200L, doctorService.getAllPatients(doctor_id));
     }
 
