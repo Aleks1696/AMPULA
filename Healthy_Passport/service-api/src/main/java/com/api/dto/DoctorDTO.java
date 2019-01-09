@@ -11,16 +11,16 @@ package com.api.dto;
  *
  *  Yaroslav Halindzovskiy 6.01.2017
  *   Добавил DoctorType в ввиде строки.
+ *
+ *   Aleksandr Borodavka 08.01.2018
+ *   Добавил гетеры и сетеры на поле String doctorType
  * */
 
 public class DoctorDTO {
 
     private Long id;
-
     private String name;
-
     private String surname;
-
     private String doctorType;
 
     public Long getId() {
@@ -45,6 +45,14 @@ public class DoctorDTO {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public String getDoctorType() {
+        return doctorType;
+    }
+
+    public void setDoctorType(String doctorType) {
+        this.doctorType = doctorType;
     }
 
     @Override

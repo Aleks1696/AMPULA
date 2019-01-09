@@ -1,5 +1,6 @@
 package com.api.dto;
 
+import java.time.LocalDate;
 import java.util.Date;
 /***
  Data Transfer Object - основное назначение класса,
@@ -20,7 +21,7 @@ public class PatientDTO {
     private Long id;
     private String name;
     private String surname;
-    private Date birthday;
+    private String birthday;
     private String card;
 
     public Long getId() {
@@ -47,11 +48,11 @@ public class PatientDTO {
         this.surname = surname;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
