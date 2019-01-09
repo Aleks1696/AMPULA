@@ -1,4 +1,4 @@
-package com.service.core.domain.types;
+package com.api.request.types;
 
 public enum  Gender {
 

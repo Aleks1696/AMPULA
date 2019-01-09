@@ -1,4 +1,4 @@
-package com.api.request;
+package com.api.request.types;
 
 public enum DoctorsTypes {
 
