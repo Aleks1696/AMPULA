@@ -54,7 +54,7 @@ public class DoctorServiceImpl implements DoctorService {
     public void deleteDoctor(Long id) {
         Doctor doctor = doctorRepository.findOne(id);
         if (doctor == null) {
-            throw new EntryIsNotFoundException(500L, String.format("Doctor with id = %id is not found", id));
+            throw new EntryIsNotFoundException(500L, String.format("Doctor with id = %i is not found", id));
         }
         doctor.removeDoctor(doctorRepository, cardRepository);
         doctorRepository.delete(id);

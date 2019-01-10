@@ -37,7 +37,7 @@ public class Patient {
     private LocalDate birthday;
 
     @OneToOne(fetch = FetchType.EAGER, mappedBy = "patient", targetEntity = Card.class,
-    cascade = CascadeType.REMOVE)
+    cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Card card;
 
     public Patient() {
