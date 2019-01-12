@@ -8,28 +8,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/*** Карточка:
- 1.Рост
- 2.Вес
- 3.Группа крови
- 4.Пол
- 5.История Болезни(Врач может редактировать и просматривать)
- 6.Больница,в которой зарегистрирован пользователь
-
- by Yaroslav Halindzovskiy 17.12.2018
-
- // Заменил поля "hight' and 'weight' с Long на Double,так как вес и рост может быть
- не целый 20.12.2018
-
- by Aleksandr Borodavka 03.01.2019
- Заменил поле Gender с Character на String. Не знаю почему но с символом вообще ничего не работает. Выдает
- ошибку по типу: "Can not parse Character."
-
- Aleksandr Borodavka 09.01.2019
- Доктор связан с картой, не с пациентом
-
- */
-
 @Entity
 @Table(name = "cards")
 public class Card {

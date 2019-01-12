@@ -11,18 +11,6 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
-/****
- * Врач:
- * 1.Имя.
- * 2.Фамилия
- * 3.Какой врач(Хирург,кардиолог и тд)
- *
- * 20.12.2018 - by Yaroslav Halindzovskiy
- *
- * Aleksandr Borodavka 08.01.2019
- * добавил анотацию @Enumarated(EnumType.STRING)
- * */
 @Entity
 @Table(name = "doctors")
 public class Doctor {
