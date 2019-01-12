@@ -7,20 +7,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**********
- Пациент:
- 0.ID(можно сделать по ИНН)
- 1. Фамилия
- 2.Имя
- 3.год рождения
- 4. Сущность " Карточка"
-
- by Yaroslav Halindzovskiy 17.12.2018
-
- Aleksandr Borodavka 09.01.2019
-
-
- */
 @Entity
 @Table(name = "patients")
 public class Patient {
