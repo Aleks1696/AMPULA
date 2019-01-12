@@ -19,13 +19,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- *
- * Creater by Yaroslav Halindzovskiy 20.12.2018
- *
- * Implemented by Aleksandr Borodavka 03.01.2019
- *
- * */
 @Service
 public class CardServiceImpl implements CardService {
 
